@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * use put to print a string on stdo
- * 
+ *
  * Return: 0 on success
  */
 int main(void)

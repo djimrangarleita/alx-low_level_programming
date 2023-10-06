@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * Prints the size of different data types on stdo
- * 
+ *
  * Return: 0 on success
  */
 int main(void)
