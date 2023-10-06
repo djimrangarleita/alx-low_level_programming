@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -S -miamcu $CFILE
+gcc -S -masm=intel $CFILE
