@@ -2,8 +2,10 @@
 
 /**
  * main - Entry point
+ *
  * Prints the size of different data types on stdo
- * return 0 on success
+ * 
+ * Return: 0 on success
  */
 int main(void)
 {

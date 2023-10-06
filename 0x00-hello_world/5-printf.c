@@ -2,8 +2,10 @@
 
 /**
  * main - Entry point
+ *
  * use printf to print a string on stdo
- * return 0 on success
+ * 
+ * Return: 0 on success
  */
 int main(void)
 {
