@@ -3,7 +3,8 @@
 /**
  * main - Entry point of the program
  *
- * This function prints the smallest combination of digit numbers of base 10 starting from 01
+ * This function prints the smallest combination of digit numbers of base 10
+ * starting from 01
  *
  * Return: Always return 0 on success
  */
@@ -18,8 +19,11 @@ int main(void)
 		{
 			putchar('0' + i);
 			putchar('0' + j);
-			putchar(',');
-			putchar(' ');
+			if (i != 8)
+			{
+				putchar(',');
+				putchar(' ');
+			}
 		}
 	}
 	putchar('\n');
