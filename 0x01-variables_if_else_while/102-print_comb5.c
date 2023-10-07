@@ -3,8 +3,7 @@
 /**
  * main - Entry point of the program
  *
- * This function prints the smallest combination of digit numbers of base 10
- * starting from 01
+ * This function prints all possible combinations of 2 2-digit
  *
  * Return: Always return 0 on success
  */
