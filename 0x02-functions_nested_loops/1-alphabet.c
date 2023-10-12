@@ -1,12 +1,15 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: 0 on success
+ * print_alphabet - Print alphabets from a to z followed by a new line
  */
-int main(void)
+void print_alphabet(void)
 {
-	print_alphabet();
-	return (0);
+	char c;
+
+	for (c = 'a'; c <= 'z'; c++)
+	{
+		_putchar(c);
+	}
+	_putchar('\n');
 }
