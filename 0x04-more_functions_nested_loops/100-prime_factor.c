@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Entry point, print prime factors of n
+ * main - Entry point, print the largest prime factor of @n
  *
  * Return: 0 on success
  */
@@ -15,11 +15,10 @@ int main(void)
 	{
 		if (n % i == 0)
 		{
-			printf("%d", i);
 			n /= i;
-			if (n != 1)
+			if (n == 1)
 			{
-				printf(", ");
+				printf("%d\n", i);
 			}
 		}
 		else
@@ -27,6 +26,5 @@ int main(void)
 			i++;
 		}
 	}
-	printf("\n");
 	return (0);
 }
