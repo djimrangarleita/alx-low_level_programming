@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * print_to_98 - print all natural nums form n to 98;
@@ -7,12 +8,12 @@
  */
 void print_to_98(int n)
 {
-	//int inc;
-	//inc = 1;
+	int inc = 1;
 	int tmp;
 
-	do
-	{
+	if (n > 98)
+		inc = -1;
+	do {
 		if (n < 0)
 		{
 			_putchar('-');
@@ -26,7 +27,8 @@ void print_to_98(int n)
 		{
 			_putchar(tmp + '0');
 		}
-		else{
+		else
+		{
 			_putchar(tmp / 10 + '0');
 			_putchar(tmp % 10 + '0');
 		}
@@ -35,7 +37,8 @@ void print_to_98(int n)
 			_putchar(',');
 			_putchar(' ');
 		}
-		n++;
-	} while(n < 99);
+		n += inc;
+	} while (n < 99 || n > 99);
+	_putchar('\n');
 	_putchar('\n');
 }
