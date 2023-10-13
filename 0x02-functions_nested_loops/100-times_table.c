@@ -21,7 +21,12 @@ void print_times_table(int n)
 			for (j = 0; j < n; j++)
 			{
 				val += i;
-				if (val > n)
+				if (val > 99)
+				{
+					_putchar(' ');
+					_putchar(val / 10 + '0');
+				}
+				if (val > 9)
 				{
 					_putchar(' ');
 					_putchar(' ');
