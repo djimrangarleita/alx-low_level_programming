@@ -19,7 +19,7 @@ int main(void)
 	srand((unsigned int)(time(NULL)));
 
 	randomizer = rand() % 4;
-	char password[length];
+	char password[12];
 
 	for (i = 0; i < length; i++)
 	{
