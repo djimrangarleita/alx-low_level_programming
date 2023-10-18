@@ -15,11 +15,11 @@ int main(void)
 	char calpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char special[] = "!@#$%^&*()~][{}"; /* 15  */
 	char digit[] = "1234567890";
+	char password[12];
 
 	srand((unsigned int)(time(NULL)));
 
 	randomizer = rand() % 4;
-	char password[12];
 
 	for (i = 0; i < length; i++)
 	{
