@@ -18,6 +18,8 @@ char *cap_string(char *s)
 			if (s[i - 1] == separator[j] && s[i] >= 'a' && s[i] <= 'z')
 				s[i] = 'A' + (s[i] - 'a');
 		}
+		if (s[i] == '\t')
+			s[i] = ' ';
 		i++;
 	}
 
