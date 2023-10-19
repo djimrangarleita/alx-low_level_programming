@@ -15,7 +15,8 @@ char *cap_string(char *s)
 	{
 		for (j = 0; j < seplen; j++)
 		{
-			if (s[i - 1] == separator[j] && s[i] >= 'a' && s[i] <= 'z')
+			if (s[i] != '\0' && s[i - 1] == separator[j] && s[i] >=
+					'a' && s[i] <= 'z')
 				s[i] = 'A' + (s[i] - 'a');
 		}
 		i++;
