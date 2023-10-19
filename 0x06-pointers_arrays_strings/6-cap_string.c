@@ -8,7 +8,7 @@
 char *cap_string(char *s)
 {
 	int i = 0, j;
-	char separator[] = " \n	,;.!?\"(){}";
+	char separator[] = " \n\t,;.!?\"(){}";
 	int seplen = strlen(separator);
 
 	while (s[i] != '\0')
