@@ -1,5 +1,4 @@
 #include <string.h>
-#include <stdio.h>
 
 /**
  * _strncpy - Copy string src to string dest
