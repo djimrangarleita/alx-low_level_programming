@@ -12,6 +12,9 @@ int main(void)
     char s2[] = "World!\n";
     char *ptr;
 
+    printf("------\n");
+    printf("Size of s1 is %lu\n", sizeof(s1));
+    printf("------\n");
     printf("%s\n", s1);
     printf("%s", s2);
     ptr = _strncat(s1, s2, 1);
