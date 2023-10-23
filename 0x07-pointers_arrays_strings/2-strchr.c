@@ -1,3 +1,5 @@
+#include <string.h>
+
 /**
  * _strchr - Locate a char in a string
  * @s: String to search from
@@ -15,5 +17,5 @@ char *_strchr(char *s, char c)
 		i++;
 	}
 
-	return (0);
+	return (NULL);
 }
