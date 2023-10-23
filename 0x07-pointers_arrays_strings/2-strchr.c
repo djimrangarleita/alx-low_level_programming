@@ -1,5 +1,3 @@
-#include <string.h>
-
 /**
  * _strchr - Locate a char in a string
  * @s: String to search from
@@ -13,9 +11,9 @@ char *_strchr(char *s, char c)
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			return (&s[i]);
+			return (s + i);
 		i++;
 	}
 
-	return (NULL);
+	return (0);
 }
