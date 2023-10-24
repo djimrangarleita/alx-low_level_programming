@@ -22,6 +22,8 @@ char *_strstr(char *haystack, char *needle)
 			int l = i + 1;
 
 			start = i;
+			if (slen == 1)
+				return (haystack + start);
 
 			while (l < j && haystack[l] != '\0')
 			{
