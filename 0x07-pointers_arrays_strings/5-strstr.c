@@ -1,5 +1,4 @@
 #include <string.h>
-#include <stdio.h>
 
 /**
  * _strstr - Locate a substring
@@ -22,7 +21,6 @@ char *_strstr(char *haystack, char *needle)
 			int j = slen + i;
 			int l = i + 1;
 
-			printf("Slen: %d...\nl: %d...\nj: %d...\n", slen, l, j);
 			start = i;
 
 			while (l < j && haystack[l] != '\0')
@@ -34,7 +32,6 @@ char *_strstr(char *haystack, char *needle)
 				l++;
 				k++;
 			}
-			printf("k: %d et l: %d\n", k, l);
 		}
 
 		i++;
