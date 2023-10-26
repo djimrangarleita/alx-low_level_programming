@@ -30,7 +30,7 @@ int search_sqrt(int inf, int sup, int n)
 
 		if (mid * mid == n)
 			return (mid);
-		else if (mid * mid < n && (mid + 1) * (mid + 1) > n)
+		if (mid * mid < n && (mid + 1) * (mid + 1) > n)
 			return (-1);
 
 		if (mid * mid < n)

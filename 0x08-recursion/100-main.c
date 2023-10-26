@@ -10,19 +10,15 @@ int main(void)
 {
     int r;
 
-    r = _sqrt_recursion(1);
+    r = is_palindrome("level");
     printf("%d\n", r);
-    r = _sqrt_recursion(1024);
+    r = is_palindrome("redder");
     printf("%d\n", r);
-    r = _sqrt_recursion(16);
+    r = is_palindrome("test");
     printf("%d\n", r);
-    r = _sqrt_recursion(17);
+    r = is_palindrome("step on no pets");
     printf("%d\n", r);
-    r = _sqrt_recursion(25);
-    printf("%d\n", r);
-    r = _sqrt_recursion(-1);
-    printf("%d\n", r);
-    r = _sqrt_recursion(16777216);
+    r = is_palindrome("");
     printf("%d\n", r);
     return (0);
 }
