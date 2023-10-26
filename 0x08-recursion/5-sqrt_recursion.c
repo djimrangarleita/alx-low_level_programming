@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int search_sqrt(int, int, int);
 
 /**
@@ -22,7 +24,7 @@ int _sqrt_recursion(int n)
  */
 int search_sqrt(int inf, int sup, int n)
 {
-	int mid;
+	long int mid;
 
 	if (inf <= sup)
 	{
@@ -31,7 +33,9 @@ int search_sqrt(int inf, int sup, int n)
 		if (mid * mid == n)
 			return (mid);
 		if (mid * mid < n && (mid + 1) * (mid + 1) > n)
+		{
 			return (-1);
+		}
 
 		if (mid * mid < n)
 			return (search_sqrt(mid + 1, sup, n));
