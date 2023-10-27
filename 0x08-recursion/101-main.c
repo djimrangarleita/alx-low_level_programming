@@ -10,7 +10,7 @@ int main(void)
 {
     int r;
 
-    r = wildcmp("holberton-holberton.c", "holbe*rton.c");
+    r = wildcmp("holberton.c", "h*c");
     printf("%d\n", r);
     r = wildcmp("main.c", "*.c");
     printf("%d\n", r);

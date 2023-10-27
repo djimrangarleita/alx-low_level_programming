@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _isalpha - Print alphabets from a to z followed by a new line
  * @c: int param, the char to be tested
@@ -7,9 +5,9 @@
  */
 int _isalpha(int c)
 {
-	if (isalpha(c) == 0)
+	if ((c < 123 && c > 96) || (c < 91 && c > 64))
 	{
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

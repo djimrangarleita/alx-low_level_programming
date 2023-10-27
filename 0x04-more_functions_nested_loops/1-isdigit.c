@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _isdigit - Test if a given char is a digit number
  * @c: Int char to test
@@ -7,9 +5,9 @@
  */
 int _isdigit(int c)
 {
-	if (!isdigit(c))
+	if (c > 47 && c < 58)
 	{
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

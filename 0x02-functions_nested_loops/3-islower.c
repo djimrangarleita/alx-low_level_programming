@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _islower - Print alphabets from a to z followed by a new line
  * @c: int param, the char to be tested
@@ -7,7 +5,7 @@
  */
 int _islower(int c)
 {
-	if (islower(c))
+	if (c < 123 && c > 96)
 	{
 		return (1);
 	}
