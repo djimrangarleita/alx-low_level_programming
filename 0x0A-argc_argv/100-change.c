@@ -42,9 +42,6 @@ int main(int argc, char *argv[])
  */
 int coin_counter(int amount)
 {
-	if (amount < 2)
-		return (amount);
-
 	if (amount >= 25)
 		return ((amount / 25) + coin_counter(amount % 25));
 
@@ -57,5 +54,5 @@ int coin_counter(int amount)
 	if (amount >= 2)
 		return ((amount / 2) + coin_counter(amount % 2));
 
-	return (0);
+	return (amount);
 }
