@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - Entry point, driver, print sum of two numbers
@@ -13,11 +14,17 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (*argv[i] != '0' && atoi(argv[i]) == 0)
-		{
-			printf("Error\n");
+		int j = 0;
 
-			return (1);
+		while (argv[i][j] != '\0')
+		{
+			if (!isdigit(argv[i][j]))
+			{
+				printf("Error\n");
+
+				return (1);
+			}
+			j++;
 		}
 		sum += atoi(argv[i]);
 	}
