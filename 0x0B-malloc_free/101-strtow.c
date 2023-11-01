@@ -26,8 +26,6 @@ char **strtow(char *str)
 		i++;
 	}
 
-	printf("Word count is %d\n", wcount);
-
 	lenar = malloc(wcount * sizeof(int));
 
 	if (lenar == NULL)
@@ -55,9 +53,6 @@ char **strtow(char *str)
 			i++;
 	}
 
-
-	for (i = 0; i < wcount; i++)
-		printf("W%i is %d chars\n", i, lenar[i]);
 
 	newstr = malloc(wcount * sizeof(char *));
 
