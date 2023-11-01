@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 /**
  * strtow - Split string into words
@@ -11,7 +13,7 @@ char **strtow(char *str)
 	int *lenar;
 	char **newstr;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || *str == '\0' || (*str == ' ' && str[i + 1] == '\0'))
 		return (NULL);
 
 	while (str[i] != '\0')
@@ -23,6 +25,8 @@ char **strtow(char *str)
 		}
 		i++;
 	}
+
+	printf("Word count is %d\n", wcount);
 
 	lenar = malloc(wcount * sizeof(int));
 
@@ -37,7 +41,7 @@ char **strtow(char *str)
 		if (str[i] != ' ')
 		{
 			found = 1;
-			while (str[i] != ' ')
+			while (str[i] != ' ' && str[i] != '\0')
 			{
 				lenar[k] += 1;
 				i++;
@@ -50,6 +54,10 @@ char **strtow(char *str)
 		else
 			i++;
 	}
+
+
+	for (i = 0; i < wcount; i++)
+		printf("W%i is %d chars\n", i, lenar[i]);
 
 	newstr = malloc(wcount * sizeof(char *));
 
@@ -69,7 +77,7 @@ char **strtow(char *str)
 		{
 			found = 1;
 			l = 0;
-			while (str[i] != ' ')
+			while (str[i] != ' ' && str[i] != '\0')
 			{
 				newstr[k][l] = str[i];
 				l++;
