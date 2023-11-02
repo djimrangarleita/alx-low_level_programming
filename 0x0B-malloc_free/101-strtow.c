@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+int *wcount(char *str);
 
 /**
  * strtow - Split string into words
@@ -8,24 +9,17 @@
  */
 char **strtow(char *str)
 {
-	int i = 0, k = 0, wcount = 0, l;
+	int i = 0, k = 0, l;
 	int *lenar;
+	int *mywcount;
 	char **newstr;
 
 	if (!str || !*str || *str == '\0')
 		return (NULL);
 
-	while (str[i] != '\0')
-	{
-		if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
-					str[i - 1] == ' '))
-		{
-			wcount++;
-		}
-		i++;
-	}
 
-	lenar = malloc(wcount * sizeof(int));
+	mywcount = wcount(str);
+	lenar = malloc(*mywcount * sizeof(int));
 
 	if (lenar == NULL)
 		return (NULL);
@@ -45,12 +39,12 @@ char **strtow(char *str)
 	}
 
 
-	newstr = malloc(wcount * sizeof(char *));
+	newstr = malloc(*mywcount * sizeof(char *));
 
 	if (newstr == NULL)
 		return (NULL);
 
-	for (i = 0; i < wcount; i++)
+	for (i = 0; i < *mywcount; i++)
 		newstr[i] = malloc((lenar[i] + 1) * sizeof(char));
 	/* Handle error */
 
@@ -74,6 +68,31 @@ char **strtow(char *str)
 	}
 
 	free(lenar);
+	free(mywcount);
 
 	return (newstr);
+}
+
+/**
+ * wcount - count the number of words in str
+ * @str: Pointer to the used string
+ * Return: Int, number of word
+ */
+int *wcount(char *str)
+{
+	int mywc = 0, i = 0;
+	int *mywcount = malloc(sizeof(int));
+
+	while (str[i] != '\0')
+	{
+		if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
+					str[i - 1] == ' '))
+		{
+			mywc++;
+		}
+		i++;
+	}
+	*mywcount = mywc;
+
+	return (mywcount);
 }
