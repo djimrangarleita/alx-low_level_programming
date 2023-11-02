@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 /**
  * strtow - Split string into words
@@ -9,11 +8,11 @@
  */
 char **strtow(char *str)
 {
-	int i = 0, k = 0, wcount = 0, l, found;
+	int i = 0, k = 0, wcount = 0, l;
 	int *lenar;
 	char **newstr;
 
-	if (str == NULL || *str == '\0' || (*str == ' ' && str[i + 1] == '\0'))
+	if (!str || !*str || *str == '\0')
 		return (NULL);
 
 	while (str[i] != '\0')
@@ -34,23 +33,15 @@ char **strtow(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		found = 0;
-
 		if (str[i] != ' ')
-		{
-			found = 1;
-			while (str[i] != ' ' && str[i] != '\0')
-			{
-				lenar[k] += 1;
-				i++;
-			}
-		}
+			lenar[k] += 1;
 
-		if (found)
+		else if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
+					str[i - 1] == ' '))
+		{	printf("New word, k is %i", k);
 			k++;
-
-		else
-			i++;
+		}
+		i++;
 	}
 
 
@@ -65,29 +56,21 @@ char **strtow(char *str)
 
 	i = 0;
 	k = 0;
+	l = 0;
 	while (str[i] != '\0')
 	{
-		found = 0;
 		if (str[i] != ' ')
 		{
-			found = 1;
-			l = 0;
-			while (str[i] != ' ' && str[i] != '\0')
-			{
-				newstr[k][l] = str[i];
-				l++;
-				i++;
-			}
+			newstr[k][l] = str[i];
+			l++;
 		}
-		if (found)
+		if ((i != 0 && str[i] == ' ' && str[i - 1] != ' '))
 		{
 			newstr[k][l] = '\0';
 			k++;
+			l = 0;
 		}
-		else
-		{
-			i++;
-		}
+		i++;
 	}
 
 	free(lenar);
