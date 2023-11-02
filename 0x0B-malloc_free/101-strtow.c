@@ -79,12 +79,10 @@ int *_strlen_mix(char *str, int count)
 
 	while (str[i] != '\0')
 	{
-		if (str[i] != ' ')
-			lenar[k] += 1;
-
-		else if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
+		if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
 					str[i - 1] == ' '))
 		{
+			lenar[k] = strlen(&str[i]);
 			k++;
 		}
 		i++;
