@@ -38,7 +38,7 @@ char **strtow(char *str)
 
 		else if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
 					str[i - 1] == ' '))
-		{	printf("New word, k is %i", k);
+		{
 			k++;
 		}
 		i++;
