@@ -15,10 +15,14 @@ char **strtow(char *str)
 	int *lenar, *mywcount;
 	char **newstr;
 
-	if (!str || !*str || *str == '\0' || (strlen(str) == 1 && *str == ' '))
+	if (!str || !*str || *str == '\0')
 		return (NULL);
 
 	mywcount = wcount(str);
+
+	if (!mywcount || !*mywcount)
+		return (NULL);
+
 	lenar = _strlen_mix(str, *mywcount);
 	if (lenar == NULL)
 		return (NULL);
@@ -111,8 +115,9 @@ char **split_to_w(char *str, int *lenar, int count)
 	for (j = 0; j < count; j++)
 		newstr[j] = malloc((lenar[j] + 1) * sizeof(char));
 	/* Handle error */
-	
+
 	newstr[count] = NULL;
+
 	while (str[i] != '\0' && k < count)
 	{
 		if (str[i] != ' ')
