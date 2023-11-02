@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
+
 int *wcount(char *str);
+int *_strlen_mix(char *str, int count);
+char **split_to_w(char *str, int *lenar, int count);
 
 /**
  * strtow - Split string into words
@@ -9,62 +12,23 @@ int *wcount(char *str);
  */
 char **strtow(char *str)
 {
-	int i = 0, k = 0, l;
-	int *lenar;
-	int *mywcount;
+	int *lenar, *mywcount;
 	char **newstr;
 
-	if (!str || !*str || *str == '\0')
+	if (!str || !*str || *str == '\0' || (strlen(str) == 1 && *str == ' '))
 		return (NULL);
 
-
 	mywcount = wcount(str);
-	lenar = malloc(*mywcount * sizeof(int));
-
+	lenar = _strlen_mix(str, *mywcount);
 	if (lenar == NULL)
 		return (NULL);
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] != ' ')
-			lenar[k] += 1;
-
-		else if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
-					str[i - 1] == ' '))
-		{
-			k++;
-		}
-		i++;
-	}
-
-
-	newstr = malloc(*mywcount * sizeof(char *));
+	newstr = split_to_w(str, lenar, *mywcount);
 
 	if (newstr == NULL)
-		return (NULL);
-
-	for (i = 0; i < *mywcount; i++)
-		newstr[i] = malloc((lenar[i] + 1) * sizeof(char));
-	/* Handle error */
-
-	i = 0;
-	k = 0;
-	l = 0;
-	while (str[i] != '\0')
 	{
-		if (str[i] != ' ')
-		{
-			newstr[k][l] = str[i];
-			l++;
-		}
-		if ((i != 0 && str[i] == ' ' && str[i - 1] != ' '))
-		{
-			newstr[k][l] = '\0';
-			k++;
-			l = 0;
-		}
-		i++;
+		free(lenar);
+		return (NULL);
 	}
 
 	free(lenar);
@@ -95,4 +59,76 @@ int *wcount(char *str)
 	*mywcount = mywc;
 
 	return (mywcount);
+}
+
+/**
+ * _strlen_mix - length of each word in the string
+ * @str: The string
+ * @count: Number of words in str
+ * Return: Pointer to an array contains lengths
+ */
+int *_strlen_mix(char *str, int count)
+{
+	int i = 0, k = 0;
+	int *lenar;
+
+	lenar = malloc(count * sizeof(int));
+
+	if (lenar == NULL)
+		return (NULL);
+
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+			lenar[k] += 1;
+
+		else if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
+					str[i - 1] == ' '))
+		{
+			k++;
+		}
+		i++;
+	}
+
+	return (lenar);
+}
+
+/**
+ * split_to_w - This function split str to an array of words
+ * @str: The string
+ * @lenar: Array that contains length of each word in the str
+ * @count: Number of words in str
+ * Return: Pointer to the array of words or NULL
+ */
+char **split_to_w(char *str, int *lenar, int count)
+{
+	int i = 0, l = 0, k = 0, j;
+	char **newstr;
+
+	newstr = malloc(count * sizeof(char *));
+
+	if (newstr == NULL)
+		return (NULL);
+
+	for (j = 0; j < count; j++)
+		newstr[j] = malloc((lenar[j] + 1) * sizeof(char));
+	/* Handle error */
+
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+		{
+			newstr[k][l] = str[i];
+			l++;
+		}
+		if ((i != 0 && str[i] == ' ' && str[i - 1] != ' '))
+		{
+			newstr[k][l] = '\0';
+			k++;
+			l = 0;
+		}
+		i++;
+	}
+
+	return (newstr);
 }
