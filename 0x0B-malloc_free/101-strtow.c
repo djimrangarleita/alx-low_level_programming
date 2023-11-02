@@ -77,7 +77,7 @@ int *_strlen_mix(char *str, int count)
 	if (lenar == NULL)
 		return (NULL);
 
-	while (str[i] != '\0')
+	while (str[i] != '\0' && k < count)
 	{
 		if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
 					str[i - 1] == ' '))
@@ -103,7 +103,7 @@ char **split_to_w(char *str, int *lenar, int count)
 	int i = 0, l = 0, k = 0, j;
 	char **newstr;
 
-	newstr = malloc(count * sizeof(char *));
+	newstr = malloc((count + 1) * sizeof(char *));
 
 	if (newstr == NULL)
 		return (NULL);
@@ -111,8 +111,9 @@ char **split_to_w(char *str, int *lenar, int count)
 	for (j = 0; j < count; j++)
 		newstr[j] = malloc((lenar[j] + 1) * sizeof(char));
 	/* Handle error */
-
-	while (str[i] != '\0')
+	
+	newstr[count] = NULL;
+	while (str[i] != '\0' && k < count)
 	{
 		if (str[i] != ' ')
 		{
