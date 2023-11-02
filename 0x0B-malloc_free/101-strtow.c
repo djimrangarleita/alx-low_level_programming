@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 int *wcount(char *str);
 int *_strlen_mix(char *str, int count);
@@ -15,10 +16,14 @@ char **strtow(char *str)
 	int *lenar, *mywcount;
 	char **newstr;
 
-	if (!str || !*str || *str == '\0' || (strlen(str) == 1 && *str == ' '))
+	if (!str || !*str || *str == '\0')
 		return (NULL);
 
 	mywcount = wcount(str);
+
+	if (!mywcount || !*mywcount)
+		return (NULL);
+
 	lenar = _strlen_mix(str, *mywcount);
 	if (lenar == NULL)
 		return (NULL);
@@ -77,12 +82,12 @@ int *_strlen_mix(char *str, int count)
 	if (lenar == NULL)
 		return (NULL);
 
-	while (str[i] != '\0')
+	while (str[i] != '\0' && k < count)
 	{
-		if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
-					str[i - 1] == ' '))
+		if (str[i] != ' ')
+			lenar[k] += 1;
+		else if ((i != 0 && str[i - 1] != ' '))
 		{
-			lenar[k] = strlen(&str[i]);
 			k++;
 		}
 		i++;
@@ -103,16 +108,28 @@ char **split_to_w(char *str, int *lenar, int count)
 	int i = 0, l = 0, k = 0, j;
 	char **newstr;
 
-	newstr = malloc(count * sizeof(char *));
+	newstr = malloc((count + 1) * sizeof(char *));
 
 	if (newstr == NULL)
 		return (NULL);
 
 	for (j = 0; j < count; j++)
+	{
 		newstr[j] = malloc((lenar[j] + 1) * sizeof(char));
-	/* Handle error */
+		if (newstr[j] == NULL)
+		{
+			for (i = 0; i <= j; i++)
+				free(newstr[i]);
 
-	while (str[i] != '\0')
+			free(newstr);
+			return (NULL);
+		}
+	}
+
+	newstr[count] = NULL;
+
+	i = 0;
+	while (str[i] != '\0' && k < count)
 	{
 		if (str[i] != ' ')
 		{
