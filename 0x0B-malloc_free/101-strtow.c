@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 int *wcount(char *str);
 int *_strlen_mix(char *str, int count);
@@ -83,10 +84,10 @@ int *_strlen_mix(char *str, int count)
 
 	while (str[i] != '\0' && k < count)
 	{
-		if ((i == 0 && str[i] != ' ') || (i != 0 && str[i] != ' ' &&
-					str[i - 1] == ' '))
+		if (str[i] != ' ')
+			lenar[k] += 1;
+		else if ((i != 0 && str[i - 1] != ' '))
 		{
-			lenar[k] = strlen(&str[i]);
 			k++;
 		}
 		i++;
@@ -113,11 +114,21 @@ char **split_to_w(char *str, int *lenar, int count)
 		return (NULL);
 
 	for (j = 0; j < count; j++)
+	{
 		newstr[j] = malloc((lenar[j] + 1) * sizeof(char));
-	/* Handle error */
+		if (newstr[j] == NULL)
+		{
+			for (i = 0; i <= j; i++)
+				free(newstr[i]);
+
+			free(newstr);
+			return (NULL);
+		}
+	}
 
 	newstr[count] = NULL;
 
+	i = 0;
 	while (str[i] != '\0' && k < count)
 	{
 		if (str[i] != ' ')
