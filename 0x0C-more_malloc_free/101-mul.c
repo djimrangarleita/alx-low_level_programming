@@ -48,11 +48,12 @@ int main(int argc, char *argv[])
 
 /**
  * _printstr - print a string using putchar
- * @str - the string to be printed
+ * @str: the string to be printed
  */
 void _printstr(char *str)
 {
 	int i = 0;
+
 	while (str[i] != '\0')
 	{
 		_putchar(str[i]);
