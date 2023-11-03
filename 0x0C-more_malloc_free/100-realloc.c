@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * _realloc - allocate mem to an array of @nmemb elt of size @size each
@@ -9,13 +10,22 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int newsize)
 {
+	void *newptr;
+
 	if (newsize == 0 && ptr != NULL)
 	{
 		free(ptr);
-
 		return (NULL);
 	}
 	if (newsize == old_size)
 		return (ptr);
-	return (ptr);
+
+	newptr = malloc(newsize);
+	if (ptr == NULL)
+		return (newptr);
+
+	memcpy(newptr, ptr, old_size);
+	free(ptr);
+
+	return (newptr);
 }
