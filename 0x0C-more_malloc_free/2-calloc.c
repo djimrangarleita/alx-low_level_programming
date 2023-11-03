@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * _calloc - allocate mem to an array of @nmemb elt of size @size each
@@ -16,6 +17,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 
 	nptr = malloc(nmemb * size);
+	ptr = malloc(nmemb * size);
 
 	if (nptr == NULL)
 		return (NULL);
@@ -23,7 +25,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	for (i = 0; i < (int)nmemb; i++)
 		nptr[i] = '\0';
 
-	ptr = (void *)nptr;
+	memcpy(ptr, nptr, nmemb);
+	free(nptr);
 
 	return (ptr);
 }
