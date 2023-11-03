@@ -9,27 +9,15 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	unsigned int i;
 	void *ptr;
-	int *nptr;
 
-	if (!nmemb || !size)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 
 	ptr = malloc(nmemb * size);
-	nptr = malloc(nmemb * size);
 
-	if (!nptr || !ptr)
+	if (!ptr)
 		return (NULL);
-
-	for (i = 0; i < nmemb; i++)
-	{
-		nptr[i] = 0;
-	}
-
-	memcpy((int *)ptr, nptr, nmemb);
-
-	free(nptr);
 
 	return (ptr);
 }
