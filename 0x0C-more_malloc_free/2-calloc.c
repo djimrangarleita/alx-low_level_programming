@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * _calloc - allocate mem to an array of @nmemb elt of size @size each
