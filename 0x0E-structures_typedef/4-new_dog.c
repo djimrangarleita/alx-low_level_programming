@@ -12,9 +12,16 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *newdog;
+	char *dname, *oname;
+	int lname = 0, lowner = 0;
 
-	char *dname = malloc(sizeof(char) * strlen(name));
-	char *oname = malloc(sizeof(char) * strlen(owner));
+	if (name)
+		lname = strlen(name);
+	if (owner)
+		lowner = strlen(owner);
+
+	dname = malloc(sizeof(char) * lname);
+	oname = malloc(sizeof(char) * lowner);
 
 	newdog = malloc(sizeof(dog_t));
 
