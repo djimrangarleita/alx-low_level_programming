@@ -15,6 +15,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	char *dname = malloc(sizeof(char) * strlen(name));
 	char *oname = malloc(sizeof(char) * strlen(owner));
+
 	newdog = malloc(sizeof(dog_t));
 
 	if (!dname || !oname || !newdog)
