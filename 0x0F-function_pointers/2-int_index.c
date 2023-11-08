@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 /**
  * int_index - search for an int
  * @array: array of int elt where to seach
@@ -12,7 +14,7 @@ int int_index(int *array, int size, int (*cmp)(int))
 	if (size <= 0)
 		return (-1);
 
-	if (array)
+	if (array != NULL && cmp != NULL)
 	{
 		for (i = 0; i < size; i++)
 		{
