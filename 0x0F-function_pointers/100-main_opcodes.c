@@ -9,9 +9,8 @@
  */
 int main(int argc, char *argv[])
 {
-	FILE *fptr;
 	int i, pbyte;
-	char c;
+	int (*main_ptr)(int, char **) = main;
 
 	if (argc != 2)
 	{
@@ -26,21 +25,16 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	fptr = fopen(__FILE__, "r");
-
-	if (fptr)
+	i = 0;
+	while (i < pbyte)
 	{
-		i = 0;
-		while ((c = getc(fptr)) != EOF && i < pbyte)
-		{
-			printf("%x", c);
-			i++;
-			if (i < pbyte)
-				printf(" ");
-		}
-		printf("\n");
-		fclose(fptr);
+		printf("%.2x", *(unsigned char *)main_ptr);
+		i++;
+		if (i < pbyte)
+			printf(" ");
+		main_ptr++;
 	}
+	printf("\n");
 
 	return (0);
 }
