@@ -43,10 +43,7 @@ void _print_str(va_list ap)
 {
 	const char *s = va_arg(ap, char *);
 
-	if (!s)
-		printf("(nil)");
-	if (s)
-		printf("%s", s);
+	printf("%s", s);
 }
 
 /**
