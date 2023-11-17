@@ -21,5 +21,6 @@ int main(void)
     print_list(head);
     free_list(head);
     head = NULL;
+    print_list(head);
     return (0);
 }
