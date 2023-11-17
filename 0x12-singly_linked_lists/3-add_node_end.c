@@ -11,8 +11,6 @@
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	//printf("Hello\n");
-	//printf("Head is at %p\n", *head);
 	list_t *new;
 	list_t *ptr;
 
@@ -27,20 +25,18 @@ list_t *add_node_end(list_t **head, const char *str)
 	new->len = (int)strlen(str);
 	new->next = NULL;
 
-	if (*head == NULL)
-	{
-		printf("Bef => Head: %p | New: %p\n", *head, new);
-		*head = new;
-		printf("Head: %p\n", *head);
-	}
 	ptr = *head;
-	while (ptr != NULL)
+	if (ptr == NULL)
 	{
-		printf("Pos: %p => %s\n", ptr, ptr->str);
-		ptr = ptr->next;
+		*head = new;
 	}
-	*(&ptr) = new;
-	//ptr = new;
-	
-	return (new);
+	else
+	{
+		while (ptr->next != NULL)
+		{
+			ptr = ptr->next;
+		}
+		ptr->next = new;
+	}
+	return (*head);
 }
