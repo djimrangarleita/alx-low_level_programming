@@ -12,7 +12,7 @@ void free_list(list_t *head)
 	if (head != NULL)
 	{
 		ptr = head;
-		while (ptr->next != NULL)
+		while (ptr != NULL)
 		{
 			if (ptr->str != NULL)
 				free(ptr->str);
