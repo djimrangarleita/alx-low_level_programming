@@ -1,16 +1,11 @@
-section .data
-	text db "Hello, Holberton",10
+bits 64
+global main
+extern printf
 
-section .text
-	global _start
-
-_start:
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, text
-	mov rdx, 17
-	syscall
-
-	mov rax, 60
-	mov rdi, 0
-	syscall
+main:
+	mov edi, format
+	xor eax, eax
+	call printf
+	mov eax, 0
+	ret
+format: db `Hello, Holberton\n`,0
