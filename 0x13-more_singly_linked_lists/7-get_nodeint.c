@@ -2,8 +2,9 @@
 #include <stdlib.h>
 
 /**
- * get_nodeint - add new node at the beginning of a list
+ * get_nodeint_at_index - add new node at the beginning of a list
  * @head: current head of the list
+ * @index: the node to be returned
  * Return: The address of the new elt or null
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
