@@ -25,7 +25,7 @@ int main(void)
     printf("-----------------\n");
     delete_nodeint_at_index(&head, 5);
     print_listint(head);
-    printf("-----------------\n");
+   printf("-----------------\n");
     delete_nodeint_at_index(&head, 0);
     print_listint(head);
     printf("-----------------\n");
