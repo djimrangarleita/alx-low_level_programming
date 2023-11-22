@@ -1,5 +1,7 @@
 #include "main.h"
 
+void printnum(unsigned int n);
+void printspace(int n);
 /**
  * print_times_table - Print times table
  * @n: Table to print
@@ -23,22 +25,17 @@ void print_times_table(int n)
 				val += i;
 				if (val > 99)
 				{
-					_putchar(' ');
-					_putchar(val / 10 + '0');
+					printspace(1);
 				}
-				if (val > 9)
+				else if (val > 9)
 				{
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(val / 10 + '0');
+					printspace(2);
 				}
 				else
 				{
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(' ');
+					printspace(3);
 				}
-				_putchar(val % 10 + '0');
+				printnum(val);
 				if (j < n - 1)
 				{
 					_putchar(',');
@@ -50,5 +47,36 @@ void print_times_table(int n)
 	else
 	{
 		_putchar('\n');
+	}
+}
+
+/**
+ * printnum - print unsigned nums
+ * @n: the num to be printed
+ */
+void printnum(unsigned int n)
+{
+	if (n < 10)
+	{
+		_putchar(n + '0');
+	}
+	else
+	{
+		printnum(n / 10);
+		printnum(n % 10);
+	}
+}
+
+/**
+ * printspace - print ' ' char to separate ints
+ * @n: number of space to write
+ */
+void printspace(int n)
+{
+	int i;
+
+	for (i = 0; i < n; i++)
+	{
+		_putchar(' ');
 	}
 }
