@@ -4,7 +4,7 @@
 
 /**
  * free_listint_safe - safely print list of ints, remove loop if any
- * @head: head of the list
+ * @h: head of the list
  * Return: number of nodes, exit 98 if function fails
  */
 size_t free_listint_safe(listint_t **h)
