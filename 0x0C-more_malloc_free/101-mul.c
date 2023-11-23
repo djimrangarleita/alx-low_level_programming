@@ -7,7 +7,16 @@ void _printstr(char *str);
 void print_number(int n);
 
 /**
- * main - Entry point, driver, print sum of two numbers
+ * multiply num manually 1 by 1
+ * use array to store them
+ * extract val from argc[1][j] starting with the last extract arg[2][j]
+ * multiply argv[1][j] * argv[2][j], store result in a given array
+ * initialize result array with -1 and give max size possible;
+ * stop printing when -1 found
+ */
+
+/**
+ * main - Entry point, driver,q print sum of two numbers
  * @argc: The count of arguments passed to main
  * @argv: The vector of argv, pointer to array of str
  * Return: 0 on success
