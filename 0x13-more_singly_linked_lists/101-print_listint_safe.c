@@ -5,19 +5,24 @@
 /**
  * check_list - check if next ptr is in list, otherwise insert it
  * @hptr: ptr to list of known ptrs
- * @ptr: the head->next ptr to check in the list
+ * @ptr: the head ptr to check in the list
  * Return: 1 if ptr in list, 0 otherwise
  */
-int check_list(listp_t **hptr, listint_t *ptr)
+int check_list(listp_t **hptr, void *ptr)
 {
 	listp_t *tmp, *newnode;
 
 	tmp = *hptr;
 	while (tmp != NULL && tmp->next != NULL)
 	{
-		if (tmp->p == ptr)
+		if ((void *)tmp->p == ptr)
 		{
-			ptr->next = NULL;
+			while (*hptr != NULL)
+			{
+				tmp = *hptr;
+				*hptr = (*hptr)->next;
+				free(tmp);
+			}
 			return (1);
 		}
 		tmp = tmp->next;
@@ -26,8 +31,8 @@ int check_list(listp_t **hptr, listint_t *ptr)
 	newnode = malloc(sizeof(listp_t));
 	if (!newnode)
 		exit(98);
-	newnode->p = ptr;
 
+	newnode->p = (listint_t *)ptr;
 	if (*hptr != NULL)
 		tmp->next = newnode;
 	else
@@ -44,17 +49,16 @@ int check_list(listp_t **hptr, listint_t *ptr)
 size_t print_listint_safe(const listint_t *head)
 {
 	int nodes = 0;
-	listp_t *hptr = NULL;
+	listp_t *hptr = NULL, *tmp2;
 	const listint_t *tmp;
 
 	tmp = head;
 	while (tmp != NULL)
 	{
-		if (check_list(&hptr, tmp->next))
+		if (check_list(&hptr, (void *)tmp))
 		{
-			printf("[%p] %d\n", (void *)tmp, tmp->n);
-			printf("-> [%p] %d\n", (void *)tmp->next, tmp->next->n);
-			tmp = NULL;
+			printf("-> [%p] %d\n", (void *)tmp, tmp->n);
+			return (nodes);
 		}
 		else
 		{
@@ -63,7 +67,13 @@ size_t print_listint_safe(const listint_t *head)
 		}
 		nodes++;
 	}
-	free(hptr);
+
+	while (hptr != NULL)
+	{
+		tmp2 = hptr;
+		hptr = (hptr)->next;
+		free(tmp2);
+	}
 
 	return (nodes);
 }
