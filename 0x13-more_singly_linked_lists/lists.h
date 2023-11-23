@@ -17,6 +17,17 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * struct listp_t - singly linked list of known ptr
+ * @p: ptr to listint_t
+ * @next: ptr to next elt of list
+ */
+typedef struct listp_t
+{
+	listint_t *p;
+	struct listp_t *next;
+} listp_t;
+
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
 listint_t *add_nodeint(listint_t **head, const int n);
