@@ -1,5 +1,5 @@
-#ifndef HEADER_BIT
-#define HEADER_BIT
+#ifndef HEADER_BITMA
+#define HEADER_BITMA
 
 void _putchar(char c);
 unsigned int binary_to_uint(const char *b);
