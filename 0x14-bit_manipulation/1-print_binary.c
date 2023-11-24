@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdio.h>
 
 /**
@@ -6,7 +7,16 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned int a = 1;
+	int i;
+	int printit = 0;
+	int bin;
 
-	printf("Left shifted by 1: %d\n", a << 4);
+	for (i = 31; i >= 0; i--)
+	{
+		bin = (n >> i) & 1;
+		if (bin)
+			printit = 1;
+		if (printit || i == 0)
+			_putchar(bin + '0');
+	}
 }
