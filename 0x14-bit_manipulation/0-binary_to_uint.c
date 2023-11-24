@@ -1,5 +1,4 @@
 #include "main.h"
-#include <math.h>
 
 int _strlen(const char *str);
 
