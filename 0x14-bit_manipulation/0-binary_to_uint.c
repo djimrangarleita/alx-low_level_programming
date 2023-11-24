@@ -9,15 +9,15 @@ int _strlen(const char *str);
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num = 0, i, len;
+	unsigned int num = 0, i;
 
 	i = 0;
-	len = _strlen(b);
+	/* len = _strlen(b); */
 	while (b && b[i] != '\0')
 	{
 		if (b[i] != '0' && b[i] != '1')
 			return (0);
-		num += ((b[i] - '0') * (pow(2, --len)));
+		num += ((b[i] - '0'));
 		i++;
 	}
 
