@@ -17,7 +17,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int nchar = 0, tmp = 0, fd;
 	char *ch = malloc(letters * sizeof(char));
-	size_t len = 0;
+	size_t len;
 
 	fd = open(filename, O_RDONLY);
 
@@ -53,7 +53,7 @@ size_t _strlen(char *str)
 {
 	int i = 0;
 
-	while (str[i] != '\0')
+	while (str && str[i] != '\0')
 		i++;
 
 	return (i);
