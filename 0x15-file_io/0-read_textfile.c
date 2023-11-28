@@ -15,18 +15,23 @@ size_t _strlen(char *str);
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int nchar = 0, tmp = 0;
+	int nchar = 0, tmp = 0, fd;
 	char *ch = malloc(letters * sizeof(char));
-	int fd;
 	size_t len = 0;
 
 	fd = open(filename, O_RDONLY);
 
-	if (!filename || fd < 0)
+	if (!ch || !filename || fd < 0)
+	{
+		close(fd);
 		return (0);
+	}
 	tmp = read(fd, ch, letters);
 	if (tmp < 0)
+	{
+		close(fd);
 		return (0);
+	}
 
 	len = _strlen(ch);
 	if (len < letters)
