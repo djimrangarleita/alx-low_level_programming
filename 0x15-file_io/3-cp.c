@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
  */
 void read_write_file(char *file_from, char *file_to)
 {
-	int ffrom, fto, rret, wret, cffrom, cfto;
+	int ffrom, fto, rret, wret;
 	char *buffer;
 
 	buffer = malloc(1024 * sizeof(char));
