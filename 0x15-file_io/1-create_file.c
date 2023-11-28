@@ -17,7 +17,7 @@ int create_file(const char *filename, char *text_content)
 	if (!filename)
 		return (-1);
 	len = _strlen(text_content);
-	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 600);
+	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC);
 	if (fd < 0)
 	{
 		close(fd);
