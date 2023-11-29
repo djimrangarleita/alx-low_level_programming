@@ -57,6 +57,8 @@ int main(int argc, char *argv[])
  */
 void print_elf(Elf64_Ehdr *elfh)
 {
+	if (!elfh)
+		printf("No elf file\n");
 	printf("Hello elf\n");
 }
 
@@ -78,7 +80,7 @@ int is_elf(Elf64_Ehdr *elfh, char *filename, int fd)
 	else
 	{
 		close(fd);
-		printerr(98, "File is not a valid elf", filename);
+		printerr(98, "File is not a valid elf,", filename);
 	}
 
 	return (1);
