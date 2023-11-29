@@ -19,7 +19,7 @@ int is_elf(Elf64_Ehdr *elfh, char *filename, int fd);
  */
 int main(int argc, char *argv[])
 {
-	int fd;
+	int fd, tmp;
 	Elf64_Ehdr elfh;
 	char *filename;
 
@@ -69,7 +69,7 @@ void print_elf(Elf64_Ehdr *elfh)
  */
 int is_elf(Elf64_Ehdr *elfh, char *filename, int fd)
 {
-	if (elfh->e_ident[EI_MAG0] == ELFMAG0 || elfh->e_ident[ELF_MAG1] ==
+	if (elfh->e_ident[EI_MAG0] == ELFMAG0 || elfh->e_ident[EI_MAG1] ==
 			ELFMAG1 || elfh->e_ident[EI_MAG2] == ELFMAG2 ||
 			elfh->e_ident[EI_MAG3] == ELFMAG3)
 	{
@@ -80,6 +80,8 @@ int is_elf(Elf64_Ehdr *elfh, char *filename, int fd)
 		close(fd);
 		printerr(98, "File is not a valid elf", filename);
 	}
+
+	return (1);
 }
 
 /**
