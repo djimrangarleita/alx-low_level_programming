@@ -3,7 +3,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-size_t _strlen(char *str);
 /**
  * read_textfile - read a text file and output it's content to stdout
  * @filename: name of the file to read
@@ -17,7 +16,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int nchar = 0, tmp = 0, fd;
 	char *ch = malloc(letters * sizeof(char));
-	size_t len;
 
 	fd = open(filename, O_RDONLY);
 
@@ -33,28 +31,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	len = _strlen(ch);
-	if (len < letters)
-		letters = len;
-	nchar = write(1, ch, letters);
+	nchar = write(STDOUT_FILENO, ch, tmp);
 
 	close(fd);
 	free(ch);
 
 	return (nchar);
-}
-
-/**
- * _strlen - return the size of the @str
- * @str: string ptr
- * Return: size of str
- */
-size_t _strlen(char *str)
-{
-	int i = 0;
-
-	while (str && str[i] != '\0')
-		i++;
-
-	return (i);
 }
