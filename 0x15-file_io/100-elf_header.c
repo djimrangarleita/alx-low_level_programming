@@ -57,8 +57,10 @@ int main(int argc, char *argv[])
  */
 void print_elf(Elf64_Ehdr *elfh)
 {
+	int i;
+
 	printf("Magic:	 ");
-	for (int i = 0; i < EI_NIDENT; i++)
+	for (i = 0; i < EI_NIDENT; i++)
 		printf("%02x ", elfh->e_ident[i]);
 	printf("\nClass:				 ");
 	printf("%s\n", elfh->e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" :
