@@ -8,12 +8,10 @@ def max_ndigit_palindrome(n):
             product = i * j
             if product < max_product:
                 break
-
             if str(product) == str(product)[::-1] and product > max_product:
                 max_product = product
+                print(product,"=",i,"*",j)
 
     return max_product
 
 print(max_ndigit_palindrome(3))
-print(max_ndigit_palindrome(2))
-print(max_ndigit_palindrome(4))
