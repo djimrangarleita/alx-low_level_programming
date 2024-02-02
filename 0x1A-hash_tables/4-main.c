@@ -29,6 +29,7 @@ int main(void)
     hash_table_set(ht, "value_null", NULL);
     hash_table_set(ht, "value_null", "Override val null");
     hash_table_set(ht, "null_val", NULL);
+    hash_table_set(ht, "val_empty", "");
 
     value = hash_table_get(ht, "python");
     printf("%s:%s\n", "python", value);
@@ -58,5 +59,7 @@ int main(void)
     printf("%s:%s\n", "value_null", value);
     value = hash_table_get(ht, "null_val");
     printf("%s:%s\n", "null_val", value);
+    value = hash_table_get(ht, "val_empty");
+    printf("%s:%s\n", "val_empty", value);
     return (EXIT_SUCCESS);
 }

@@ -75,5 +75,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 hash_node_t *create_hash_node(const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
 char *get_value_from_chaine(const hash_node_t *hn, const char *key);
+void hash_table_print(const hash_table_t *ht);
 
 #endif /* END HEADER_HT */
