@@ -87,7 +87,7 @@ Write a function that deletes a hash table.
 
 ### Task 7: $ht['Betty'] = 'Cool' **advanced**
 In PHP, hash tables are ordered. Wait... WAT? How is this even possible?
-[Dog saying whaaaat](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/5ebbea5dea5a575b38243d597604000715982925.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20240201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240201T232718Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=0ff91a001fb16781cf3869ac9470db2b2303a0f6dcdf1db9a646e0d6e0525ad4)
+![Dog saying whaaaat](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/5ebbea5dea5a575b38243d597604000715982925.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20240201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240201T232718Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=0ff91a001fb16781cf3869ac9470db2b2303a0f6dcdf1db9a646e0d6e0525ad4)
 
 **Before you continue,** please take a moment to think about it: how you would implement it if you were asked to during an interview or a job. What data structures would you use? How would it work?
 
@@ -110,4 +110,4 @@ Rewrite the previous functions using these data structures:
 	- Should print the hash tables key/value pairs in reverse order using the sorted linked list
 - `void shash_table_delete(shash_table_t *ht);`
 - You are allowed to have more than 5 functions in your file
-[PHP Mascot](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/253/php.png)
+![PHP Mascot](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/253/php.png)
