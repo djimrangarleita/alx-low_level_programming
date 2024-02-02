@@ -79,5 +79,7 @@ void hash_table_print(const hash_table_t *ht);
 void print_list(hash_node_t *hn, int *should_append);
 int override_val(hash_node_t *hn, const char *value);
 hash_node_t *check_node_in_chaine(hash_node_t *hn, const char *key);
+void hash_table_delete(hash_table_t *ht);
+void delete_chaine(hash_node_t *hn);
 
 #endif /* END HEADER_HT */

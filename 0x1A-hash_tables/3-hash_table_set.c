@@ -28,23 +28,16 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		/* collision or override */
-		if (strcmp(ht->array[index]->key, key) == 0)
-		{
-			return (override_val(ht->array[index], value));
-		}
-		else
-		{
-			to_override = check_node_in_chaine(ht->array[index], key);
-			if (to_override)
-				return (override_val(to_override, value));
-			hash_node = create_hash_node(key, value);
-			if (hash_node == NULL)
-				return (0);
-			hash_node->next = ht->array[index];
-			ht->array[index] = hash_node;
-			return (1);
-		}
+		/* collision create or override */
+		to_override = check_node_in_chaine(ht->array[index], key);
+		if (to_override)
+			return (override_val(to_override, value));
+		hash_node = create_hash_node(key, value);
+		if (hash_node == NULL)
+			return (0);
+		hash_node->next = ht->array[index];
+		ht->array[index] = hash_node;
+		return (1);
 	}
 
 	return (0);
@@ -61,7 +54,6 @@ hash_node_t *create_hash_node(const char *key, const char *value)
 	hash_node_t *new_node;
 
 	new_node = malloc(sizeof(hash_node_t));
-
 	if (!new_node)
 		return (NULL);
 
@@ -78,7 +70,7 @@ hash_node_t *create_hash_node(const char *key, const char *value)
  * override_val - override a value for existing keys
  * @hn: hash node
  * @value: new val
- * Return: 1 on success, 0 on failure
+ * Return: always return 1
  */
 int override_val(hash_node_t *hn, const char *value)
 {
