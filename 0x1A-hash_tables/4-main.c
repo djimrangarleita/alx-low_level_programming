@@ -26,6 +26,9 @@ int main(void)
     hash_table_set(ht, "mentioner", "Test collision 2");
     hash_table_set(ht, NULL, "Test key null");
     hash_table_set(ht, "", "Test key empty string");
+    hash_table_set(ht, "value_null", NULL);
+    hash_table_set(ht, "value_null", "Override val null");
+    hash_table_set(ht, "null_val", NULL);
 
     value = hash_table_get(ht, "python");
     printf("%s:%s\n", "python", value);
@@ -51,5 +54,9 @@ int main(void)
     printf("%s:%s\n", "", value);
     value = hash_table_get(ht, NULL);
     printf("%s:%s\n", "NULL", value);
+    value = hash_table_get(ht, "value_null");
+    printf("%s:%s\n", "value_null", value);
+    value = hash_table_get(ht, "null_val");
+    printf("%s:%s\n", "null_val", value);
     return (EXIT_SUCCESS);
 }
