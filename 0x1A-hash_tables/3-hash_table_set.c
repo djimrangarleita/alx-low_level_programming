@@ -13,6 +13,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	int index;
 	hash_node_t *hash_node;
+	hash_node_t *to_override;
 
 	if (!ht || !key || !*key)
 		return (0);
@@ -30,14 +31,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		/* collision or override */
 		if (strcmp(ht->array[index]->key, key) == 0)
 		{
-			free(ht->array[index]->value);
-			ht->array[index]->value = NULL;
-			if (value)
-				ht->array[index]->value = strdup(value);
-			return (1);
+			return (override_val(ht->array[index], value));
 		}
 		else
 		{
+			to_override = check_node_in_chaine(ht->array[index], key);
+			if (to_override)
+				return (override_val(to_override, value));
 			hash_node = create_hash_node(key, value);
 			if (hash_node == NULL)
 				return (0);
@@ -72,4 +72,38 @@ hash_node_t *create_hash_node(const char *key, const char *value)
 		new_node->value = strdup(value);
 
 	return (new_node);
+}
+
+/**
+ * override_val - override a value for existing keys
+ * @hn: hash node
+ * @value: new val
+ * Return: 1 on success, 0 on failure
+ */
+int override_val(hash_node_t *hn, const char *value)
+{
+	free(hn->value);
+	hn->value = NULL;
+	if (value)
+		hn->value = strdup(value);
+
+	return (1);
+}
+
+/**
+ * check_node_in_chaine - check if key exist in collided nodes
+ * @key: ptr to key to check in chaine
+ * @hn: ptr to the head of node where to check key
+ * Return: ptr to node that contains key or NULL
+ */
+hash_node_t *check_node_in_chaine(hash_node_t *hn, const char *key)
+{
+	while (hn)
+	{
+		if (strcmp(hn->key, key) == 0)
+			return (hn);
+		hn = hn->next;
+	}
+
+	return (NULL);
 }

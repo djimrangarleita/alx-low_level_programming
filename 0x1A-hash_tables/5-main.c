@@ -21,6 +21,16 @@ int main(void)
     hash_table_set(ht, "Asterix", "Obelix");
     hash_table_set(ht, "Betty", "Cool");
     hash_table_set(ht, "98", "Battery Street");
+    hash_table_set(ht, "c", "isfun");
+    hash_table_set(ht, "hetairas", "Test collision 1");
+    hash_table_set(ht, "mentioner", "Test collision 2");
+    hash_table_set(ht, "hetairas", "Override collided");
+    hash_table_set(ht, NULL, "Test key null");
+    hash_table_set(ht, "", "Test key empty string");
+    hash_table_set(ht, "value_null", NULL);
+    hash_table_set(ht, "value_null", "Override val null");
+    hash_table_set(ht, "null_val", NULL);
+    hash_table_set(ht, "val_empty", "");
     hash_table_print(ht);
     return (EXIT_SUCCESS);
 }

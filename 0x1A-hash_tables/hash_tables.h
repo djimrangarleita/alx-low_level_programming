@@ -76,5 +76,8 @@ hash_node_t *create_hash_node(const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
 char *get_value_from_chaine(const hash_node_t *hn, const char *key);
 void hash_table_print(const hash_table_t *ht);
+void print_list(hash_node_t *hn, int *should_append);
+int override_val(hash_node_t *hn, const char *value);
+hash_node_t *check_node_in_chaine(hash_node_t *hn, const char *key);
 
 #endif /* END HEADER_HT */
