@@ -12,11 +12,9 @@ void hash_table_print(const hash_table_t *ht)
 	unsigned long int i;
 	int should_append = 0;
 
-	if (!ht || !ht->array)
-	{
-		printf("{}\n");
+	if (!ht)
 		return;
-	}
+
 	printf("{");
 	for (i = 0; i < ht->size; i++)
 	{
